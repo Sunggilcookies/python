@@ -27,4 +27,5 @@ print("아이디 : {}".format(user_id))
 pw = '*'*len(pw)
 print("비밀번호 : {}".format(pw))
 id_card2 = id_card2 [0] + ('*' * 6)
-print("주민등록번호 : {0}-{1}".format(id_card1, id_card2))
+print("주민등록번호 :  {0}-{1}".format(id_card1, id_card2))
+
