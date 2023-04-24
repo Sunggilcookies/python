@@ -15,13 +15,14 @@ def polygon2(n,d):
 
 polygon(3)
 polygon(5)
+'''
 t.penup()
 t.forward(100)
 t.pendown()
 
 polygon2(3, 100)
 polygon2(5, 100)
-'''
+''''''
 for i in range(30):
     for x in range(3):
         t.forward(50)
