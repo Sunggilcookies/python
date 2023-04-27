@@ -22,7 +22,7 @@ def clear(): #매개변수 도혀의 변의 개수
 
 
 
-t.speed(10)
+t.speed(8)
 t.shape("turtle")
 #함수 호출시 괄호가 없음 - 주의!, Right - 첫글자 대문자(상수)
 t.onkeypress(turn_right, "Right")

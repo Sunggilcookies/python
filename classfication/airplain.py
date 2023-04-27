@@ -14,11 +14,12 @@ class Airplane:
         print("비행기가 이륙합니다.")
 
     def fly(self):
-        print("비행기가 비행합니다.")
+        print("일반 비행합니다.")
     def land(self):
         print("비행기가 착륙합니다.")
 #객체 생성 방법
-air = Airplane()
-air.take_off()
-air.fly()
-air.land()
+if __name__ == "__main__":
+    air = Airplane()
+    air.take_off()
+    air.fly()
+    air.land()

@@ -1,66 +1,28 @@
-# 2차원리스트 - 3행 2열(표 형태로 인식)
-a = [
-    [10, 20],
-    [30, 40],
-    [50, 60]
-]
-# #c출력
-print(a[0][0]) #10
-print(a[0][1]) #20
-print(a[1][0]) #30
-print(a[1][1]) #40
-#
-#2차원 리스트에 요소 추가 - 리스트를 추가함
-a.append([70, 80])
+# 리스트의 최대값을 계산하는 함수
+def get_max(a):
+    max_v = a[0]  # 리스트의 첫번째 값을 최대값으로 설정
+    for i in a:
+        if max_v < i:
+            max_v = i
+    return max_v
 
-# 전체 출력
-print(a)
+# 리스트의 최대값의 위치 구하는 함수
+def get_max_idx(a):
+    max_idx = 0 # 첫번째 값을 최대값의 위치로 설정
+    n = len(a)
+    for i in range(1, n):
+        if a[max_idx] < a[i]:  # 최대값으로 비교
+            max_idx = i        # 인덱스를 저장
+    return max_idx  #for문 종료시 return
+"""
+    max_idx = 0, i = 1, a[0] < a[1] : 3 < 2 False
+                 i = 2, a[0] < a[2] : 3 < 5 True
+    max_dix = 2, i = 3, a[2] < a[3] : 5 < 1 False
+                 i = 4, a[2] < a[4] : 5 < 4 False 
 
-for x,y in a:
-    print(x,y)
+"""
 
-#리스트의 연산(합계)
-total = 0
-count = 0 #2차원 이상은 개수를 직접 카운트
-for i in range(0, len(a)): #len(a)=3-1=2
-    for j in range(0, len(a[i])):
-        count +=1
-        total += a[i][j]
-    print()
-#평균 구하기
-avg = total / count
-print(f'합계 : {total}')
-print(f'개수:{count}')
-print(f'평균{avg}')
-'''
-    i=0 j=0 0+10, total = 10
-        j=1 10+30 total = 40
-    i=1 j=0 30+50 total = 80
-        j=1 30+70 total = 100
-    i=2 j=0 100+20, total = 120
-        j=1 120+40 total = 160
-    i=3 j=0 160+60 total = 220
-        j=1 220+80 total = 360
-    
-        
-    
-'''
-
-#
-# b= [1, 2, 3, 4]
-# b.append(10)
-# print(b)
-#
-#
-# # print(len(b))
-# #3차원리스트의 크기
-# print("2차원 리스트 크기 (행)", len(a))
-# print("2차원 리스트 크기 (열)", len(a[0]))
-# print("2차원 리스트 크기 (열)", len(a[1]))
-#
-# #for ~ range()
-# for i in range(0, len(a)): #len(a)=3
-#     for j in range(0, len(a[i])):
-#         print(a[i][j], end=' ')
-#     print()
-#
+v = [3, 2, 5, 1, 4]
+print(len(v))
+print("최대값 : ", get_max(v))
+print("최대값 위치 : ", get_max_idx(v))
