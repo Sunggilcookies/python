@@ -3,17 +3,20 @@
 # 맴버 변수에 직접 접근하지 않음 - 정보 은닉(캡슐화)
 # 함수안에 맴버변수를 작성 - set(), get()
 #외부에서는 함수에 접근
+#클래스 변수를 하면 초기화되지않음
+#인스턴스 변수는 초기화됌
 class Counter:
     x = 0
 
     def __init__(self):
-        Counter.x += 1 #클래스변수이므로 클래스로 직접 접근
+        self.x = 0 #인스턴스 변수는 호출할때마다 초기화됌
+        self.x += 1
 
     def get_count(self):
-        return Counter.x
+        return self.x
 
 c1 = Counter()
-# print(c1.x)#맴버 변수에 접근하지 않음
+print(c1.x)
 print(c1.get_count())
 
 c2 = Counter()
