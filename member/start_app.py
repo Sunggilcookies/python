@@ -3,8 +3,7 @@
 # 웹 서버 - flask
 # sql을 할때는 띄어쓰기를 주의할것...........................................
 
-from flask import Flask, render_template, request, \
-    redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
 
 app = Flask(__name__)
@@ -47,6 +46,8 @@ def register():
         cursor = conn.cursor()
         sql = f"INSERT INTO member(memberid, passwd, name, gender)" \
               f"VALUES ('{id}','{pw}','{name}','{gender}')"
+
+        session['usedid'] = request.form['memberid']
         cursor.execute(sql)  #검색 수행
         conn.commit() #커밋 완료
         conn.close()
@@ -65,7 +66,7 @@ def login():
         id = request.form['memberid']
         pw = request.form['passwd']
 
-        #database에 접속
+        #database에 접속 - 로그인체크
         conn = getconn()
         cursor = conn.cursor()
         sql = f"SELECT * FROM member " \
