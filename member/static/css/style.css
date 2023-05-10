@@ -14,17 +14,19 @@ header{width: 100%; height: 100px; background: #0077cc;}
 nav{float:right; width: 70%;height: 100px;}
 
 /*주메뉴*/
-#topMenu{height: 60px;}
-#topMenu > li{float: left; position: relative;}
-#topMenu > li > a{display: block; padding: 40px 0px 40px 50px; color: #eee;}
+#topMenu{height: 60px; padding-left:20px;}
+#topMenu > li{float: left; position: relative; text-align:center;}
+#topMenu > li > a{display: block; padding: 40px 0px 40px 50px; color: #eee;
+    font-size:0.9em;}
 #topMenu > li > a:hover{color:#444;}
 
 /*부메뉴*/
-#topMenu > li > ul{position: absolute; display:none; text-align:center;
-  top:100px;  width: 140px; background: rgba(246,248,213,0.6);}
+#topMenu > li > ul{position: absolute; display:none; left:-30px;
+  top:100px;  width: 130px; background: rgba(246,248,213,0.6);}
 #topMenu > li:hover > ul{display: block;}
-#topMenu > li > ul li{padding : 10px 30px; text-align:center;}
-#topMenu > li > ul > li > a{font-size: 15px; padding: 5px; color: #000;}
+#topMenu > li > ul li{padding : 10px 20px; text-align:center;}
+#topMenu > li > ul > li > a{font-size: 14x; padding: 5px; color: #000;}
+#topMenu > li > ul > li > a:hover{color:red;}
 
 /* main 스타일*/
 #main-pic img{width:100%; height:240px; }
@@ -79,10 +81,13 @@ margin-right:10px;}
 /* 테블릿 기준 - 780px 이상*/
 @media screen and (min-width:780px){
     /* header 슽아리 */
-    #logo h1{color: #eee; padding-left:20px; font-size:1.8em; font-style:italic;}
+    #topMenu{height:60px; padding-left:60px;}
+    #logo h1{color: #eee; padding-left:20px; font-size:1.6em; font-style:italic;}
     #topMenu > li > a{display: block; padding: 40px 10px 40px 100px; color: #eee;}
 #topMenu > li > ul{position: absolute; display:none; text-align:center;
   top:100px; left:50px; width: 140px; background: rgba(246,248,213,0.6);}
+#topMenu > li > a > .session{color: #ff0; font-size:0.9em;}
+
 
 /*register 스타일*/
 #register{width: 450px; margin: 30px auto 100px;}

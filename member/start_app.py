@@ -2,6 +2,7 @@
 # templates 폴더, static 폴더
 # 웹 서버 - flask
 # sql을 할때는 띄어쓰기를 주의할것...........................................
+# 내용에 오류가있을시에는 홈페이지 에러가 뜰수있음 스펠링 잘 체크할것.
 
 from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
@@ -14,6 +15,7 @@ app.secret_key = 'abc1234'
 @app.route('/', methods = ['GET'])
 def index():
     return render_template('index.html')
+#맴버테이블과 연동
 
 def getconn():
     conn = sqlite3.connect("c:/green_project/sqlworks/pydb/memberdb.db")
@@ -46,8 +48,8 @@ def register():
         cursor = conn.cursor()
         sql = f"INSERT INTO member(memberid, passwd, name, gender)" \
               f"VALUES ('{id}','{pw}','{name}','{gender}')"
-
-        session['usedid'] = request.form['memberid']
+        # 자동 로그인 - 세션 발급
+        session['userid'] = request.form['memberid']
         cursor.execute(sql)  #검색 수행
         conn.commit() #커밋 완료
         conn.close()
@@ -77,7 +79,7 @@ def login():
         conn.close()
 
         if rs: #rs - Ture
-            session['usedid'] = rs[0] #memeberid를 세션에 저장(세션발급)
+            session['userid'] = rs[0] #memeberid를 세션에 저장(세션발급)
             return redirect(url_for('index'))
         else:
             error_msg = "아이디 비번 확인"
@@ -85,9 +87,30 @@ def login():
     else:
         return render_template('login.html')
 
+# 로그 아웃
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('index'))
+
+# 게시판 목록
+@app.route('/boardlist', methods=['GET'])
+def boardlist():
+    conn = getconn()
+    cursor = conn.cursor()
+    sql = "SELECT * FROM board"
+    cursor.execute(sql)
+    boardlist = cursor.fetchall()
+
+    conn.close()
+    return render_template("boardlist.html", boardlist=boardlist)
+
+# 글쓰기
+@app.route('/writing/')
+def writing():
+    return render_template('writing.html')
+
+
+
 
 app.run()
