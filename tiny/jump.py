@@ -26,7 +26,7 @@ def main():
         new_text = new_text + jumper.get(char, char)
     print(new_text)
     
-# 2. 새로운 리스트 마늗ㄹ기
+# 2. 새로운 리스트 만들기
     new_text = []
     for char in text:
         new_text.append(jumper.get(char, char))
